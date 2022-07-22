@@ -1,0 +1,20 @@
+# 숫자개수, 총 들어가는 개수, 연속 가능한 수
+
+n, n_count, n_continue = map(int, input().split())
+n_lst = list(map(int, input().split()))
+
+# a1, a2, a3 = 5, 8, 4
+# b = [2, 4, 5, 5, 6]
+
+n_max = max(n_lst) # 제공받은 리스트에서 제일 큰 숫자 찾기
+n_lst_set = list(set(n_lst)) # 1. 제공받은 리스트에서 두 번째로 큰 숫자 찾기
+n_lst_sort = sorted(n_lst_set) # set으로 중복된 숫자 제거한 뒤 sorted로 크기 순 정렬
+
+n_rep = n_count//(n_continue+1) # 한 사이클이 반복되는 횟수
+n_mult = n_max*n_continue+n_lst_sort[-2] # 한 사이클에 곱하는 숫자
+n_remain = n_count%(n_continue+1) # 사이클 반복되고 남는 횟수
+
+if n_lst.count(n_max) >= 2: # 2. 만약 제일 큰 숫자가 제공받은 리스트 내 2 개 이상이면
+    print(n_max*a2) # 그대로 곱해지니까 총 들어가는 개수로 곱해주기
+else: # 3. 제일 큰 숫자가 1개일 때, 사이클 내 총합 + 남는 사이클의 총합
+    print(n_rep*n_mult+n_remain*n_max)
