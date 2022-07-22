@@ -1,0 +1,17 @@
+# 전체 수, 나누는 수
+
+a, b = map(int, input().split())
+count = 0 # 횟수 카운트 변수 선언
+
+while True: 
+    if a == 1: # 전체 수가 1이 되면 break
+        break
+    else: # 1이 되지 않았으면 계속 시행하기
+        if a%b == 0: # 나누는 게 최소횟수에 더 유효함
+            a = a//b
+            count += 1
+        else:
+            a -= 1
+            count += 1
+
+print(count) # 전체 횟수 출력
